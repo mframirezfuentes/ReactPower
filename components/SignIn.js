@@ -1,48 +1,61 @@
 import React, { useState } from "react";
-import styles from "./signInd.module.css";
+import styles from "./signIn.module.css";
 
 export const SignIn = () => {
-  const [nombre, setNombre] = useState("");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Formulario enviado");
+    const response = await fetch("api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+    console.log(response)
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    } else {
+      console.log("error, we can't register to user");
+    }
   };
 
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.div}>
-          <label htmlFor="nombre" className={styles.label}>
-            Nombre:
+          <label htmlFor="username" className={styles.label}>
+            Username:
           </label>
           <input
             type="text"
-            id="nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
             className={styles.input}
           />
         </div>
         <div className={styles.div}>
-          <label htmlFor="email" className={styles.label}>
-            Email:
+          <label htmlFor="password" className={styles.label}>
+            Password:
           </label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
             className={styles.input}
           />
         </div>
         <div>
           <button type="submit" className={styles.button}>
-            Enviar
+            Send
           </button>
         </div>
       </form>
