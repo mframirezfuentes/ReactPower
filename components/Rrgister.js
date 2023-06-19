@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./signIn.module.css";
 
-export const SignIn = () => {
+export const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
