@@ -1,4 +1,4 @@
-import { Register } from '../components/Rrgister'
+import { Register } from '../components/Register'
 import styles from '../styles/index.module.css'
 
 export default function Home() {
