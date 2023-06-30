@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "./signIn.module.css";
 
 export const Register = () => {
   const [username, setUsername] = useState("");
@@ -25,11 +24,11 @@ export const Register = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div >
       <div>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.div}>
-            <label htmlFor="username" className={styles.label}>
+        <form onSubmit={handleSubmit} >
+          <div >
+            <label htmlFor="username" >
               Username:
             </label>
             <input
@@ -38,11 +37,11 @@ export const Register = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className={styles.input}
+
             />
           </div>
-          <div className={styles.div}>
-            <label htmlFor="password" className={styles.label}>
+          <div >
+            <label htmlFor="password" >
               Password:
             </label>
             <input
@@ -51,11 +50,11 @@ export const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className={styles.input}
+
             />
           </div>
           <div>
-            <button type="submit" className={styles.button}>
+            <button type="submit" >
               Send
             </button>
           </div>
